@@ -26,11 +26,6 @@ source env/Scripts/Activate # Windows Git bash
 #source env/bin/activate # Linux - Mac
 pip install -r requirements.txt
 streamlit run app.py
+pip install plotly cv2-tools pandas numpy streamlit opencv-python-headless
 
-pip install plotly
-pip install cv2-tools
-pip install pandas
-pip install numpy
-pip install streamlit
-pip install opencv-python
-``` 
+```
