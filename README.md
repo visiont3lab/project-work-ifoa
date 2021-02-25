@@ -16,6 +16,8 @@ Jack1785 = Giacomo Farina
 
 ## Setup 
 
+[Api reference streamlit](https://docs.streamlit.io/en/stable/api.html)
+
 ``` 
 virtualenv env
 # virtualenv --python=python3.8 env
