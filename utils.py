@@ -5,6 +5,9 @@ import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime, time, timedelta, date
 
+# pip install streamlit --upgrade
+# pip install streamlit==0.78.0
+
 def fig_stats(regione, data_inizio, data_fine):
     select = ["deceduti","totale_casi","dimessi_guariti","variazione_totale_positivi"]
     df = None
@@ -88,7 +91,8 @@ def get_data_nazione():
        'totale_positivi_test_antigenico_rapido', 'tamponi_test_molecolare',
        'tamponi_test_antigenico_rapido']
     '''
-    url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv"
+    #url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv"
+    url = "data/dpc-covid19-ita-andamento-nazionale.csv"
     df = pd.read_csv(url)
     df["data"] = [ datetime.strptime(d, "%Y-%m-%dT%H:%M:%S") for d in  df["data"]]
     return df
@@ -100,7 +104,8 @@ def get_data_province():
        'long', 'totale_casi', 'note', 'codice_nuts_1', 'codice_nuts_2',        
        'codice_nuts_3']
     '''
-    url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv"
+    #url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv"
+    url = "data/dpc-covid19-ita-province.csv"
     df = pd.read_csv(url)
     df["data"] = [ datetime.strptime(d, "%Y-%m-%dT%H:%M:%S") for d in  df["data"]]
     return df
@@ -118,7 +123,8 @@ def get_data_regioni():
        'totale_positivi_test_antigenico_rapido', 'tamponi_test_molecolare',
        'tamponi_test_antigenico_rapido', 'codice_nuts_1', 'codice_nuts_2']
     '''
-    url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
+    #url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
+    url = "data/dpc-covid19-ita-regioni.csv"
     df = pd.read_csv(url)
     df["data"] = [ datetime.strptime(d, "%Y-%m-%dT%H:%M:%S") for d in  df["data"]]
     return df
@@ -158,3 +164,18 @@ def create_dataset(df_p):
 
     i12 = df_f["casi_da_sospetto_diagnostico"]
     i13 = df_ff["totale_casi"]
+
+def get_data_locally():
+    url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv"
+    df = pd.read_csv(url)
+    df.to_csv("data/dpc-covid19-ita-province.csv")
+
+    url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
+    df = pd.read_csv(url)
+    df.to_csv("data/dpc-covid19-ita-regioni.csv")
+
+    url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv"
+    df = pd.read_csv(url)
+    df.to_csv("data/dpc-covid19-ita-andamento-nazionale.csv")
+
+#get_data_locally()

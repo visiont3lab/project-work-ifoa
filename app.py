@@ -70,7 +70,7 @@ st.markdown('''
 
 TODO:
 
-* Creare un grafico che mostra la variazione dei deceduti, totale casi,
+* [Federico Valisi] Creare un grafico che mostra la variazione dei deceduti, totale casi,
 dimessi guariti, variazione totale positivi nel range di date scelto. Rispondiamo 
 alla domanda da ..  a .. quanti deceduti ci sono?
 
@@ -86,8 +86,8 @@ st.markdown('''
 
 TODO:
 
-* Creare script automatico di aggiornameto colore regioni. Serve a  raccogliere i dati del colore delle regioni.
-* Visualizzare attraverso una mappa il cambiamento di colore delle diverse regioni italiane. Oppure sempre usanda da .. a .. 
+* [Federico Venta] Creare script automatico di aggiornameto colore regioni. Serve a  raccogliere i dati del colore delle regioni.
+* [Tiziana] Visualizzare attraverso una mappa il cambiamento di colore delle diverse regioni italiane. Oppure sempre usanda da .. a .. 
 in base alla data visualizzare la mappa delle regione colorata a zone.
 
 Il colore delle regione ad oggi è visibile a nel sito del ministero della satute [Classificazione Regioni e Province autonome
@@ -103,8 +103,8 @@ st.markdown('''
 
 TODO:
 
-* Definire gli input che saranno utilizzati per il classificatore bassandosi sul dataset regioni.
-* Definire l'indice Rt.
+* [Leonardo] Definire gli input che saranno utilizzati per il classificatore bassandosi sul dataset regioni.
+* [Serena] Definire l'indice Rt.
 ''')
 # --------------------------------------------------------------------
 
