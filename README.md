@@ -18,4 +18,4 @@ pip install plotly cv2-tools pandas numpy streamlit opencv-python-headless
 
 ## Useful Material
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/deep-learning-course/blob/main/colab/AnalisiCovidRegioni.ipynb)
+* Estrazione Colore Zone Italia: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/AnalisiCovidRegioni.ipynb)
