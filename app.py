@@ -1,112 +1,137 @@
 import streamlit as st
-import cv2
-import numpy as np
-import base64
-import pandas as pd
-import plotly.graph_objects as go
+import utils
 
-def plot_plotly(df,x, y,title):
-    n = df[x].values.tolist()
-    fig = go.Figure()
-    for name in y:
-        m = df[name]
-        fig.add_trace(go.Scatter(x=n, y=m,
-                      mode='lines',#mode='lines+markers',
-                      name=name))
-    fig.update_layout(
-        showlegend=False,
-        hovermode = "x",
-        #paper_bgcolor = "rgb(0,0,0)" ,
-        #plot_bgcolor = "rgb(10,10,10)" , 
-        dragmode="pan",
-        title=dict(
-            x = 0.5,
-            text = title,
-            font=dict(
-                size = 20,
-                color = "rgb(0,0,0)"
-            )
-        )
-    )
-    return fig
+# Informazioni Utili
+# pip install streamlit --upgrade
+# Run: streamlit run app.py
 
+@st.cache
+def get_data():
+    # Esegue la funzione solo la priva volta che viene vista
+    df_n = utils.get_data_nazione()
+    df_r = utils.get_data_regioni()
+    df_p = utils.get_data_province()
+    return df_n,df_r, df_p
 
-st.set_option('deprecation.showfileUploaderEncoding', False)
+# Title
+st.title("Analisi Covid 2020-2021")
 
-st.title("Computer Vision App")
+# Descrizione Applicazione
+description='''
+## Descrizione
+
+A un anno dall'inizio del lockdown in italia sono stati raccolti numerosi dati relativi
+alla pandemia. In particolare la protezione civile ha creato un [dataset](https://github.com/pcm-dpc/COVID-19)
+che giornalmente ci fornisce informazioni sull'andamento del Covid-19 a livello provinciale,regionale e nazionale.
+L'obbiettivo di questo progetto e di utilizzare questi dati per creare un modello capace di predirre il colore
+di rischio associato a una regione ( bianco, giallo, arancione, arancione scuro, rosso). 
+
+Per poter realizzare il modello (classificatore) sarà necessario:
+
+1. Creare un dataset utilizzando i dati [regionali](https://github.com/pcm-dpc/COVID-19/tree/master/dati-regioni). 
+Questi contengono informazioni relative a numero  di deceduti, ricoverati e tamponi. Vogliamo utilizzare queste informazioni poichè osservando
+i [21 Indicatori forniti dal Ministero della Salute](http://www.salute.gov.it/imgs/C_17_notizie_5152_1_file.pdf)
+tali informaziono sono utilizzati per definire il colore della regione.
+
+2. Ottenere le informazioni associate al colore delle regioni nel tempo. Come è cambiato il colore delle regioni nel tempo. 
+Poichè affrontiamo un problema di supervised learning  è necessario allenare il nostro classificatore partendo da un set di input-ouput data.
+Andremo pertanto a visualizzare e collezionare i dati relativi al colore delle regioni italiane utilizzando i dati delle [aree nuove](https://github.com/pcm-dpc/COVID-19/tree/master/aree/geojson) forniti
+sempre dalla protezione civile.
+
+3. Una volta creato il dataset contenente input-output data andremo ad alleare un classicatore capace di stimare
+il colore della regione.
+
+Per riassumere al fine di completare il progetto sarà necesario:
+
+1. Creare gli input
+2. Creare gli output
+3. Creare il modello
+
+'''
+st.markdown(description)
+
+# --------------------------------------------------------------------
+# Situazione italiana ad oggi italiana
+st.markdown('## Situazione Italiana')
+date = utils.get_date()
+col1, col2, col3 = st.beta_columns(3)
+with col1:
+    data_inizio = st.selectbox("Data Inzio", date[1:])
+with col2:
+    data_fine = st.selectbox("Data Fine", date)
+with col3:
+    nomi_regioni = utils.get_nomi_regioni() 
+    nomi_regioni.insert(0,"Italia") 
+    regione = st.selectbox("Analisi", nomi_regioni)
+st.table(utils.get_stats(regione,data_inizio,data_fine)) # try also st.write(), st.dataframe
+fig = utils.fig_stats(regione,data_inizio,data_fine)
+st.plotly_chart(fig, use_container_width=True)
+st.markdown('''
+
+TODO:
+
+* Creare un grafico che mostra la variazione dei deceduti, totale casi,
+dimessi guariti, variazione totale positivi nel range di date scelto. Rispondiamo 
+alla domanda da ..  a .. quanti deceduti ci sono?
+
+''')
+# --------------------------------------------------------------------
+
+# --------------------------------------------------------------------
+# Situazione Colori Regioni
+# https://github.com/pcm-dpc/COVID-19/issues/1045
+st.markdown('''## Situazione Zone di Rischio (Colori ) Regionale ''')
 
 st.markdown('''
 
-## Introduzione
-> Applicazione di computer vision con focus threshold
+TODO:
 
-## Setup
+* Creare script automatico di aggiornameto colore regioni. Serve a  raccogliere i dati del colore delle regioni.
+* Visualizzare attraverso una mappa il cambiamento di colore delle diverse regioni italiane. Oppure sempre usanda da .. a .. 
+in base alla data visualizzare la mappa delle regione colorata a zone.
 
-### Local PC
-
-```pyhton
-virtualen env
-source env/bin/activate
-pip install streamlit opencv-python
-```
-
-### Setup Colab
-
-!wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-!unzip ngrok-stable-linux-amd64.zip
-get_ipython().system_raw('./ngrok http 8501 &')
-!curl -s http://localhost:4040/api/tunnels | python3 -c \
-    'import sys, json; print("Execute the next cell and the go to the following URL: " +json.load(sys.stdin)["tunnels"][0]["public_url"])'
-!pkill -9 ngrok
+Il colore delle regione ad oggi è visibile a nel sito del ministero della satute [Classificazione Regioni e Province autonome
+aggiornamento all'8 marzo](http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?area=nuovoCoronavirus&id=5351&lingua=italiano&menu=vuoto)
 ''')
+# --------------------------------------------------------------------
 
+# --------------------------------------------------------------------
+# Definizione degli input
+st.markdown('''## Definizione degli input per stimare le zone di rischio ''')
 
-st.sidebar.markdown('''
-## Demo Algoritmo
+st.markdown('''
 
-1. Carica un immagine [estensione "png","jpeg","jpg","bmp"]
-2. Prova a modifcare lo slider per vedere gli effetti della threshold
+TODO:
 
+* Definire gli input che saranno utilizzati per il classificatore bassandosi sul dataset regioni.
+* Definire l'indice Rt.
 ''')
-thresh_par = st.sidebar.slider('Threshold', 1, 255, 127)
-option = st.sidebar.radio('Select Threshold type',('THRESH_BINARY', 'THRESH_BINARY_INV', 'THRESH_TOZERO'))
-thresh_sel_par = cv2.THRESH_BINARY
+# --------------------------------------------------------------------
 
-if option:
-    if option=="THRESH_BINARY":
-        thresh_sel_par = cv2.THRESH_BINARY
-    elif option=="THRESH_BINARY_INV":
-        thresh_sel_par = cv2.THRESH_BINARY_INV
-    else:
-        thresh_sel_par = cv2.THRESH_TOZERO
- 
-uploaded_file = st.sidebar.file_uploader("Upload Image", type=["png","jpeg","jpg","bmp"])
-if uploaded_file is not None:
-    #print(np.fromstring(uploaded_file.read(), np.uint8))
-    image = cv2.imdecode(np.fromstring(uploaded_file.read(), np.uint8),cv2.IMREAD_COLOR)
 
-    #base64_img_bytes = uploaded_file.read() # byte
-    #decoded_image_data = base64.decodebytes(base64_img_bytes)
-    #nparr = np.fromstring(decoded_image_data, np.uint8)
-    #img = cv2.imdecode(nparr, cv2.IMREAD_COLOR) # cv2.IMREAD_COLOR in OpenCV
+# --------------------------------------------------------------------
+# Testare/allenare il modello
+st.markdown('''## Definizione degli input per stimare le zone di rischio ''')
 
-    # ----------
-    gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
-    ret, tresh = cv2.threshold(gray,thresh_par,255,thresh_sel_par)
+st.markdown('''
 
-    #------------
+TODO:
 
-    st.sidebar.image(tresh, use_column_width=True ) # width=700)
-    st.sidebar.image(gray, use_column_width=True) # width=700)
-    
+* Creare un form  dove verrano inseriti i gli inputs necessari al modello.
+* Allenare e Testare il classificatore.
+''')
+# --------------------------------------------------------------------
 
-st.header("Covid Analisi")
-df = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-andamento-nazionale/dpc-covid19-ita-andamento-nazionale.csv")
-df["data"] = [el[0:10] for el in df["data"].values.tolist()]
-st.dataframe(df, height=300, width=700)
 
-select = ["deceduti","totale_casi","dimessi_guariti"]
-select_options = st.multiselect('Seleziona cosa vuoi plottare', list(df.keys()), default=select)
+# --------- Material Extra
+st.markdown('''
+## Link Utili
 
-fig = plot_plotly(df,x ="data", y=select_options,title="Andamento Nazionale")    
-st.plotly_chart(fig, use_container_width=True)
+* [Dati covid italia](https://dati-covid.italia.it/)
+* [Protezione Civilie Covid-19 Open data](https://github.com/pcm-dpc/COVID-19)
+* [21 Indicatori Covid Ministero della Salute](http://www.salute.gov.it/imgs/C_17_notizie_5152_1_file.pdf)
+* [Dataset regioni colore](https://github.com/imcatta/restrizioni_regionali_covid)
+* [Streamlit Api](https://docs.streamlit.io/en/stable/api.html)
+* [Visualizzare la diffussione del covid](https://medium.com/polimi-data-scientists/how-to-visualize-the-spread-of-covid-19-in-italy-6d9ddea18a02)
+* [Come leggere i dati aree (Issue)](https://github.com/pcm-dpc/COVID-19/issues/1045)
+''')
