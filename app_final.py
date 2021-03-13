@@ -147,31 +147,37 @@ st.markdown('''
     Note:
     * Sarebbe interessante aggiungere l'indice Rt come input  del classificatore.
     ''')
+nomi_regioni = utils.get_nomi_regioni() 
+regione = st.selectbox("Nome Regione", nomi_regioni, index=4)
 
+ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi = utils.get_input_prediction(regione)
 col1, col2, col3, col4, col5 = st.beta_columns(5)
 with col1:
-    tamponi = st.text_input("tamponi",value=200)
+    tamponi = st.text_input("tamponi",value=tamponi)
 with col2:
-    deceduti = st.text_input("Deceduti",value=200)
+    deceduti = st.text_input("Deceduti",value=deceduti)
 with col3:
-    totale_casi = st.text_input("Totale Casi",value=200)
+    totale_casi = st.text_input("Totale Casi",value=totale_casi)
 with col4:
-    dimessi_guariti = st.text_input("Dimessi Guariti",value=200)
+    dimessi_guariti = st.text_input("Dimessi Guariti",value=dimessi_guariti)
 with col5:
-    totale_ospedalizzati = st.text_input("Totale Ospedalizzati",value=200)
+    totale_ospedalizzati = st.text_input("Totale Ospedalizzati",value=totale_ospedalizzati)
 col1, col2, col3, col4, col5 = st.beta_columns(5)
 with col1:
-    ricoverati_con_sintomi = st.text_input("Ricoverati Con Sintomi",value=200)
+    ricoverati_con_sintomi = st.text_input("Ricoverati Con Sintomi",value=ricoverati_con_sintomi)
 with col2:
-    totale_positivi = st.text_input("Totale Positivi",value=200)
+    totale_positivi = st.text_input("Totale Positivi",value=totale_positivi)
 with col3:
-    isolamento_domiciliare = st.text_input("Isol. Domiciliare",value=200)
+    isolamento_domiciliare = st.text_input("Isol. Domiciliare",value=isolamento_domiciliare)
 with col4:
-    terapia_intensiva = st.text_input("Terapia Intensiva",value=200)
+    terapia_intensiva = st.text_input("Terapia Intensiva",value=terapia_intensiva)
 with col5:
-    nuovi_positivi = st.text_input("Nuovi Positivi",value=200)
+    nuovi_positivi = st.text_input("Nuovi Positivi",value=nuovi_positivi)
 # --------------------------------------------------------------------
 
+inf = utils.Inference()
+pred = inf.predict([ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi],regione)
+st.write("Predizione Colore Zona: " + regione + " --> "+pred)
 
 # --------- Material Extra
 st.markdown('''

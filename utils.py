@@ -9,9 +9,26 @@ from zipfile import ZipFile
 import os
 import json
 import plotly.express as px
+import joblib 
 
 # pip install streamlit --upgrade
 # pip install streamlit==0.78.0
+
+
+class Inference:
+    def __init__(self,model_path="model/model.pkl"):
+        self.nomi_regioni = ['Abruzzo', 'Basilicata', 'Calabria', 'Campania', 'Emilia-Romagna', 'Friuli Venezia Giulia', 'Lazio', 'Liguria', 'Lombardia', 'Marche', 'Molise', 'P.A. Bolzano', 'P.A. Trento', 'Piemonte', 'Puglia', 'Sardegna', 'Sicilia', 'Toscana', 'Umbria', "Valle d'Aosta", 'Veneto']
+        dict_names = {"bianca":0,"gialla": 1, "arancione": 2, "rossa": 3}
+        self.names = list(dict_names)
+        self.model = joblib.load(model_path)
+    def predict(self,inputs, regione):
+        idx = self.nomi_regioni.index(regione)
+        v = [ 0 for i in range(0,len(self.nomi_regioni))]
+        v[idx] = 1
+        inputs.extend(v)
+        X = np.array(inputs,dtype=np.float).reshape(1,-1)
+        Y_hat = self.model.predict(X)
+        return self.names[int(Y_hat[0])]
 
 def fig_stats_variation(regione, data_inizio, data_fine,options):
     #select = ["deceduti","totale_casi","dimessi_guariti","terapia_intensiva","tamponi","isolamento_domiciliare"]
@@ -262,6 +279,22 @@ def get_data_locally():
     df.to_csv("data/dpc-covid19-ita-andamento-nazionale.csv")
 
 
+def get_input_prediction(regione):
+    df = pd.read_csv("data/dpc-covid19-ita-regioni-zone.csv")
+    df = df[df["denominazione_regione"]==regione]
+    last = df.tail(1)
+    ricoverati_con_sintomi = last["ricoverati_con_sintomi"].tolist()[0]
+    terapia_intensiva = last["terapia_intensiva"].tolist()[0]
+    totale_ospedalizzati = last["totale_ospedalizzati"].tolist()[0]
+    totale_positivi = last["totale_positivi"].tolist()[0]
+    isolamento_domiciliare = last["isolamento_domiciliare"].tolist()[0]
+    deceduti = last["deceduti"].tolist()[0]
+    dimessi_guariti = last["dimessi_guariti"].tolist()[0]
+    nuovi_positivi = last["nuovi_positivi"].tolist()[0]
+    totale_casi = last["totale_casi"].tolist()[0]
+    tamponi = last["tamponi"].tolist()[0]
+    return ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi
+    
 def get_map():
     df = pd.read_csv("data/dpc-covid19-ita-regioni-zone.csv")
     df["data"] = [ datetime.strptime(d, "%Y-%m-%d %H:%M:%S") for d in  df["data"]]
@@ -296,7 +329,7 @@ def get_zone_table(regione):
     df = df.sort_values(by=["data"],ascending=False)
     if regione!="Italia":
         df = df[df["denominazione_regione"]==regione]
-    inputs = ["data","denominazione_regione","zona"] #"ricoverati_con_sintomi","terapia_intensiva","totale_ospedalizzati","totale_positivi","isolamento_domiciliare","deceduti","dimessi_guariti","tamponi","zona"]
+    inputs = ["data","denominazione_regione","zona","tamponi","deceduti","totale_casi","dimessi_guariti","totale_ospedalizzati","ricoverati_con_sintomi","totale_positivi","isolamento_domiciliare","terapia_intensiva","nuovi_positivi"]
     df = df[inputs]
     return df
 
