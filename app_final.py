@@ -1,6 +1,16 @@
 import streamlit as st
 import utils
 
+# Page Style
+#st.markdown("""
+#    <style>
+#    body {
+#        background: black;
+#        color: white; 
+#    }
+#    </style>
+#    """, unsafe_allow_html=True)
+
 # Informazioni Utili
 # pip install streamlit --upgrade
 # Run: streamlit run app.py
@@ -10,11 +20,19 @@ def get_data():
     # Esegue la funzione solo la priva volta che viene vista
     utils.collect_data()
 
-# Collect data
-get_data()
-
 # Title
 st.title("Analisi Covid 2020-2021")
+# Collect data
+update = st.button("Aggiorna i dati")
+if update:
+    get_data()
+
+st.markdown('''
+                * [Github Repository](https://github.com/visiont3lab/project-work-ifoa) 
+                * Estrazione colore Zone Italia: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/AnalisiCovidRegioni.ipynb)
+                * Classificatore Zone Italia: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/ClassifierZone.ipynb)
+            ''')
+
 
 # Descrizione Applicazione
 description='''
@@ -73,11 +91,11 @@ st.plotly_chart(fig_stats_variation, use_container_width=True)
 
 st.markdown('''
 
-TASK:
+Obbiettivo:
 
-*  Creare un grafico che mostra la variazione dei deceduti, totale casi,
-dimessi guariti, variazione totale positivi nel range di date scelto. Rispondiamo 
-alla domanda da ..  a .. quanti deceduti ci sono?
+* Visualizzare l'andamento nel tempo del numero di deceduti,totale_casi,dimessi_guariti,terapia_intensiva,tamponi,isolamento_domiciliare
+* Visualizzare la variazione giornaliera dei deceduti,totale_casi,dimessi_guariti,terapia_intensiva,tamponi,isolamento_domiciliare
+* Aggiungere la possibiltà di filtrare per data e di selezionare solo quello che si desidera visualizzare.
 
 ''')
 # --------------------------------------------------------------------
@@ -85,19 +103,31 @@ alla domanda da ..  a .. quanti deceduti ci sono?
 # --------------------------------------------------------------------
 # Situazione Colori Regioni
 # https://github.com/pcm-dpc/COVID-19/issues/1045
-st.markdown('''## Situazione Zone di Rischio (Colori ) Regionale ''')
+st.markdown('''
+    ## Situazione Zone di Rischio (Colori ) Regionale 
+
+    * [Dowload Dataset](https://github.com/visiont3lab/project-work-ifoa/blob/main/data/dpc-covid19-ita-regioni-zone.csv)
+    
+    Il dataset è stato ottenuto utilizzando il notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]
+    (https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/AnalisiCovidRegioni.ipynb) 
+    e partendo dai dati delle [aree della protezione civile](https://github.com/pcm-dpc/COVID-19/tree/master/aree)
+               
+''')
 
 
-regione = st.selectbox("Selziona la Regione", nomi_regioni)
+regione = st.selectbox("Seleziona la Regione", nomi_regioni)
 st.dataframe(utils.get_zone_table(regione))
+map_btn = st.button("Visualizza Mappa") 
+if map_btn:
+    map_zone  = utils.get_map()
+    st.plotly_chart(map_zone)
 
 st.markdown('''
 
-TASK:
+Obbiettivo:
 
-* Creare script automatico di aggiornameto colore regioni. Serve a  raccogliere i dati del colore delle regioni.
-* Visualizzare attraverso una mappa il cambiamento di colore delle diverse regioni italiane. Oppure sempre usanda da .. a .. 
-in base alla data visualizzare la mappa delle regione colorata a zone.
+* Raccogliere, in modo automatico, i dati corrispondenti al colore delle regioni.
+* Visualizzare attraverso una mappa il cambiamento di colore delle diverse regioni italiane in data specifica.
 
 Il colore delle regione ad oggi è visibile a nel sito del ministero della satute [Classificazione Regioni e Province autonome
 aggiornamento all'8 marzo](http://www.salute.gov.it/portale/nuovocoronavirus/dettaglioContenutiNuovoCoronavirus.jsp?area=nuovoCoronavirus&id=5351&lingua=italiano&menu=vuoto)
@@ -105,30 +135,41 @@ aggiornamento all'8 marzo](http://www.salute.gov.it/portale/nuovocoronavirus/det
 # --------------------------------------------------------------------
 
 # --------------------------------------------------------------------
-# Definizione degli input
-st.markdown('''## Definizione degli input per stimare le zone di rischio ''')
-
+# Modello
 st.markdown('''
+    ## Modello per predirre il colore di una regione 
+    Il classifcatore di colore (pericolosità) della regione è stato sviluppato nel seguente notebook
 
-TODO:
+    * Classificatore Zone Italia: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/ClassifierZone.ipynb)
 
-* [Leonardo] Definire gli input che saranno utilizzati per il classificatore bassandosi sul dataset regioni.
-* [Serena] Definire l'indice Rt.
-''')
-# --------------------------------------------------------------------
+    Di seguito forniamo un form capace, fornendo gli inputs indicati, di predirre la zona di rischio (bianca, arancione, gialla, rossa) di una regione.         
 
+    Note:
+    * Sarebbe interessante aggiungere l'indice Rt come input  del classificatore.
+    ''')
 
-# --------------------------------------------------------------------
-# Testare/allenare il modello
-st.markdown('''## Definizione degli input per stimare le zone di rischio ''')
-
-st.markdown('''
-
-TODO:
-
-* Creare un form  dove verrano inseriti i gli inputs necessari al modello.
-* Allenare e Testare il classificatore.
-''')
+col1, col2, col3, col4, col5 = st.beta_columns(5)
+with col1:
+    tamponi = st.text_input("tamponi",value=200)
+with col2:
+    deceduti = st.text_input("Deceduti",value=200)
+with col3:
+    totale_casi = st.text_input("Totale Casi",value=200)
+with col4:
+    dimessi_guariti = st.text_input("Dimessi Guariti",value=200)
+with col5:
+    totale_ospedalizzati = st.text_input("Totale Ospedalizzati",value=200)
+col1, col2, col3, col4, col5 = st.beta_columns(5)
+with col1:
+    ricoverati_con_sintomi = st.text_input("Ricoverati Con Sintomi",value=200)
+with col2:
+    totale_positivi = st.text_input("Totale Positivi",value=200)
+with col3:
+    isolamento_domiciliare = st.text_input("Isol. Domiciliare",value=200)
+with col4:
+    terapia_intensiva = st.text_input("Terapia Intensiva",value=200)
+with col5:
+    nuovi_positivi = st.text_input("Nuovi Positivi",value=200)
 # --------------------------------------------------------------------
 
 

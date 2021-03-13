@@ -8,6 +8,7 @@ import wget
 from zipfile import ZipFile
 import os
 import json
+import plotly.express as px
 
 # pip install streamlit --upgrade
 # pip install streamlit==0.78.0
@@ -260,6 +261,33 @@ def get_data_locally():
     df = pd.read_csv(url)
     df.to_csv("data/dpc-covid19-ita-andamento-nazionale.csv")
 
+
+def get_map():
+    df = pd.read_csv("data/dpc-covid19-ita-regioni-zone.csv")
+    df["data"] = [ datetime.strptime(d, "%Y-%m-%d %H:%M:%S") for d in  df["data"]]
+    update_date = df["data"].tolist()[-1]
+    df = df[df["data"].dt.date==update_date]
+    regions = df["denominazione_regione"].tolist()
+    colors = df["zona"].tolist()
+    # https://codicicolori.com/codici-colori-rgb
+    color_discrete_map = {'unknown':  'rgb(125,125,0)', 'bianca': 'rgb(255,255,255)', 'gialla': 'rgb(255,255,108)', 'arancione': 'rgb(255,165,0)','rossa': 'rgb(255,0,0)'}
+    df = pd.DataFrame(regions, columns=['Regione'])
+    df['zona'] =colors
+    with open('data/regioni.geojson') as f:
+        italy_regions_geo = json.load(f)
+        # Choropleth representing the length of region names
+        fig = px.choropleth(data_frame=df, 
+                            geojson=italy_regions_geo, 
+                            locations='Regione', # name of dataframe column
+                            featureidkey='properties.NOME_REG',  # path to field in GeoJSON feature object with which to match the values passed in to locations
+                            color="zona",
+                            color_discrete_map=color_discrete_map,
+                            scope="europe",
+                        )
+        fig.update_geos(showcountries=False, showcoastlines=False, showland=False, fitbounds="locations")
+        title = "Situazione Italiana: " + update_date.strftime("%Y-%m-%d" )
+        fig.update_layout(title=title) #),margin={"r":0,"t":0,"l":0,"b":0})
+        return fig
 
 def get_zone_table(regione):
     #df = pd.read_csv("data/dpc-covid-19-aree.csv")
