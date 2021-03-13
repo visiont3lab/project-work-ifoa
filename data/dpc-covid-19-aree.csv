@@ -1,0 +1,165 @@
+,regione,data_inizio,data_fine,colore,link
+0,Piemonte,2020-11-06 00:00:00.000000,2020-11-20 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77054&articolo=4
+1,Valle d'Aosta,2020-11-06 00:00:00.000000,2020-11-20 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77054&articolo=4
+2,Lombardia,2020-11-06 00:00:00.000000,2020-11-20 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77054&articolo=4
+3,Calabria,2020-11-06 00:00:00.000000,2020-11-20 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77054&articolo=4
+4,Puglia,2020-11-06 00:00:00.000000,2020-11-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77054&articolo=3
+5,Sicilia,2020-11-06 00:00:00.000000,2020-11-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77054&articolo=3
+6,Veneto,2020-11-06 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=76993
+7,Friuli Venezia Giulia,2020-11-15 00:00:00.000000,2020-11-29 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5171_0_file.pdf
+8,Liguria,2020-11-10 00:00:00.000000,2020-11-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77109&articolo=3
+9,Emilia-Romagna,2020-11-15 00:00:00.000000,2020-11-29 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5171_0_file.pdf
+10,Toscana,2020-11-10 00:00:00.000000,2020-11-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77109&articolo=3
+11,Umbria,2020-11-10 00:00:00.000000,2020-11-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77109&articolo=3
+12,Marche,2020-11-15 00:00:00.000000,2020-11-29 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5171_0_file.pdf
+13,Lazio,2020-11-06 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=76993
+14,Abruzzo,2020-11-10 00:00:00.000000,2020-11-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77109&articolo=3
+15,Molise,2020-11-06 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=76993
+16,Campania,2020-11-06 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=76993
+17,Basilicata,2020-11-10 00:00:00.000000,2020-11-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77109&articolo=3
+18,Sardegna,2020-11-06 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=76993
+19,Provincia autonoma Bolzano,2020-11-10 00:00:00.000000,2020-11-24 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77109&articolo=4
+20,Provincia autonoma Trento,2020-11-06 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=76993
+21,Toscana,2020-11-15 00:00:00.000000,2020-11-29 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5171_0_file.pdf
+22,Piemonte,2020-11-20 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77208
+23,Valle d'Aosta,2020-11-20 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77208
+24,Lombardia,2020-11-20 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77208
+25,Calabria,2020-11-20 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77208
+26,Puglia,2020-11-20 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77208
+27,Sicilia,2020-11-20 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77208
+28,Abruzzo,2020-11-22 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,https://bit.ly/3kVMXNB
+29,Campania,2020-11-15 00:00:00.000000,2020-11-29 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5171_0_file.pdf
+30,Liguria,2020-11-24 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77336
+31,Umbria,2020-11-24 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77336
+32,Basilicata,2020-11-24 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77336
+33,Provincia autonoma Bolzano,2020-11-24 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77336
+34,Piemonte,2020-11-29 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5197_0_file.pdf
+35,Lombardia,2020-11-29 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5197_0_file.pdf
+36,Calabria,2020-11-29 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5197_0_file.pdf
+37,Sicilia,2020-11-29 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,http://www.salute.gov.it/imgs/C_17_notizie_5197_0_file.pdf
+38,Liguria,2020-11-29 00:00:00.000000,2020-12-03 00:00:00.000000,gialla,http://www.salute.gov.it/imgs/C_17_notizie_5197_0_file.pdf
+39,Friuli Venezia Giulia,2020-11-15 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5197_1_file.pdf
+40,Emilia-Romagna,2020-11-15 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5197_1_file.pdf
+41,Marche,2020-11-15 00:00:00.000000,2020-12-03 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5197_1_file.pdf
+42,Toscana,2020-11-15 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5197_1_file.pdf
+43,Campania,2020-11-15 00:00:00.000000,2020-12-03 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5197_1_file.pdf
+44,Abruzzo,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77515
+45,Basilicata,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77515
+46,Piemonte,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77515
+47,Lombardia,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77515
+48,Calabria,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77515
+49,Valle d'Aosta,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+50,Provincia autonoma Bolzano,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+51,Toscana,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+52,Campania,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+53,Puglia,2020-12-06 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77517
+54,Umbria,2020-12-06 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77517
+55,Friuli Venezia Giulia,2020-12-06 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77517
+56,Emilia-Romagna,2020-12-06 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77517
+57,Marche,2020-12-06 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77517
+58,Abruzzo,2020-12-13 00:00:00.000000,2020-12-26 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77661
+59,Basilicata,2020-12-13 00:00:00.000000,2020-12-26 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77661
+60,Piemonte,2020-12-13 00:00:00.000000,2020-12-26 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77661
+61,Lombardia,2020-12-13 00:00:00.000000,2020-12-26 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77661
+62,Calabria,2020-12-13 00:00:00.000000,2020-12-26 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77661
+63,Valle d'Aosta,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+64,Provincia autonoma Bolzano,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+65,Toscana,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+66,Campania,2020-12-06 00:00:00.000000,2020-12-20 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77516
+67,Intero territorio nazionale,2020-12-24 00:00:00.000000,2020-12-27 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77853
+68,Intero territorio nazionale,2020-12-31 00:00:00.000000,2021-01-03 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77853
+69,Intero territorio nazionale,2021-01-05 00:00:00.000000,2021-01-06 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77853
+70,Intero territorio nazionale,2020-12-28 00:00:00.000000,2020-12-30 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77853
+71,Intero territorio nazionale,2021-01-04 00:00:00.000000,2021-01-04 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=77853
+72,Intero territorio nazionale,2021-01-07 00:00:00.000000,2021-01-08 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+73,Intero territorio nazionale,2021-01-09 00:00:00.000000,2021-01-10 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+74,Lazio,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+75,Molise,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+76,Sardegna,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+77,Provincia autonoma Trento,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+78,Liguria,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+79,Puglia,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+80,Umbria,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+81,Friuli Venezia Giulia,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+82,Marche,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+83,Abruzzo,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+84,Basilicata,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+85,Piemonte,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+86,Valle d'Aosta,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+87,Provincia autonoma Bolzano,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+88,Toscana,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+89,Campania,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAttoById?id=78114
+90,Veneto,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78158
+91,Sicilia,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78156
+92,Emilia-Romagna,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78159
+93,Lombardia,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78157
+94,Calabria,2021-01-10 00:00:00.000000,2021-01-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78160
+95,Provincia autonoma Bolzano,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5272_2_file.pdf
+96,Sicilia,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5272_0_file.pdf
+97,Lombardia,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,rossa,http://www.salute.gov.it/imgs/C_17_notizie_5272_1_file.pdf
+98,Lazio,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+99,Provincia autonoma Trento,2021-01-16 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+100,Liguria,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+101,Puglia,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+102,Umbria,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+103,Friuli Venezia Giulia,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+104,Marche,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+105,Abruzzo,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+106,Piemonte,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+107,Valle d'Aosta,2021-01-17 00:00:00.000000,2021-01-31 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5272_3_file.pdf
+108,Veneto,2021-01-16 00:00:00.000000,2021-01-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+109,Emilia-Romagna,2021-01-16 00:00:00.000000,2021-01-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+110,Calabria,2021-01-16 00:00:00.000000,2021-01-24 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+111,Molise,2021-01-16 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+112,Sardegna,2021-01-16 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+113,Basilicata,2021-01-16 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+114,Toscana,2021-01-16 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+115,Campania,2021-01-16 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+116,Veneto,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5291_2_file.pdf
+117,Emilia-Romagna,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5291_2_file.pdf
+118,Calabria,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5291_2_file.pdf
+119,Sardegna,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5291_0_file.pdf
+120,Lombardia,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5291_1_file.pdf
+121,Lazio,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+122,Liguria,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+123,Friuli Venezia Giulia,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+124,Marche,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+125,Abruzzo,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+126,Piemonte,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+127,Valle d'Aosta,2021-02-01 00:00:00.000000,2021-03-05 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78456
+128,Veneto,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,gialla,https://bit.ly/3apBQJI
+129,Emilia-Romagna,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,gialla,https://bit.ly/3apBQJI
+130,Calabria,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,gialla,https://bit.ly/3apBQJI
+131,Lombardia,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,gialla,https://bit.ly/3apBQJI
+132,Provincia autonoma Bolzano,2021-02-01 00:00:00.000000,2021-02-15 00:00:00.000000,arancione,https://bit.ly/2YuDmo7
+133,Sicilia,2021-02-01 00:00:00.000000,2021-02-15 00:00:00.000000,arancione,https://bit.ly/2YuDmo7
+134,Puglia,2021-02-01 00:00:00.000000,2021-02-15 00:00:00.000000,arancione,https://bit.ly/2YuDmo7
+135,Umbria,2021-02-01 00:00:00.000000,2021-02-15 00:00:00.000000,arancione,https://bit.ly/2YuDmo7
+136,Sardegna,2021-01-24 00:00:00.000000,2021-02-07 00:00:00.000000,gialla,http://www.salute.gov.it/imgs/C_17_notizie_5291_0_file.pdf
+137,Puglia,2021-02-11 00:00:00.000000,2021-02-15 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78780
+138,Provincia autonoma Trento,2021-02-14 00:00:00.000000,2021-02-28 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5325_0_file.pdf
+139,Toscana,2021-02-14 00:00:00.000000,2021-02-28 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5325_0_file.pdf
+140,Liguria,2021-02-14 00:00:00.000000,2021-02-28 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5325_0_file.pdf
+141,Abruzzo,2021-02-14 00:00:00.000000,2021-02-28 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5325_0_file.pdf
+142,Provincia autonoma Bolzano,2021-02-15 00:00:00.000000,2021-03-01 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5325_0_file.pdf
+143,Umbria,2021-02-15 00:00:00.000000,2021-03-01 00:00:00.000000,arancione,http://www.salute.gov.it/imgs/C_17_notizie_5325_0_file.pdf
+144,Sicilia,2021-02-01 00:00:00.000000,2021-02-15 00:00:00.000000,gialla,https://bit.ly/2YuDmo7
+145,Molise,2021-02-21 00:00:00.000000,2021-03-07 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78893
+146,Campania,2021-02-21 00:00:00.000000,2021-03-07 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78893
+147,Emilia-Romagna,2021-02-21 00:00:00.000000,2021-03-07 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78893
+148,Provincia autonoma Trento,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78998
+149,Toscana,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78998
+150,Abruzzo,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78998
+151,Provincia autonoma Bolzano,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78998
+152,Umbria,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78998
+153,Marche,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79000
+154,Piemonte,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79000
+155,Lombardia,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79000
+156,Basilicata,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78999
+157,Molise,2021-03-01 00:00:00.000000,2021-03-15 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79001
+158,Sardegna,2021-03-01 00:00:00.000000,2021-03-13 14:37:29.298997,bianca,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79002
+159,Liguria,2021-02-14 00:00:00.000000,2021-02-28 00:00:00.000000,gialla,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=78805
+160,Campania,2021-03-08 00:00:00.000000,2021-03-22 00:00:00.000000,rossa,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79074
+161,Emilia-Romagna,2021-03-08 00:00:00.000000,2021-03-13 14:37:29.298997,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79073
+162,Friuli Venezia Giulia,2021-03-08 00:00:00.000000,2021-03-13 14:37:29.298997,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79073
+163,Veneto,2021-03-08 00:00:00.000000,2021-03-13 14:37:29.298997,arancione,https://www.trovanorme.salute.gov.it/norme/dettaglioAtto?id=79073
