@@ -24,5 +24,5 @@ pip install plotly cv2-tools pandas numpy streamlit opencv-python-headless
 * Classificatore Zone Italia: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/ClassifierZone.ipynb)
 
 
-## Note in Classe
+## Note  Classe
 * Estrazione colore Zone Italia Fatto in Classe: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/AnalisiCovidRegioniClasse.ipynb)
