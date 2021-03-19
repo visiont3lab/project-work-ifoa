@@ -137,7 +137,7 @@ aggiornamento all'8 marzo](http://www.salute.gov.it/portale/nuovocoronavirus/det
 # --------------------------------------------------------------------
 # Modello
 st.markdown('''
-    ## Modello per predirre il colore di una regione 
+    ## Modello per predire il colore di una regione 
     Il classifcatore di colore (pericolosità) della regione è stato sviluppato nel seguente notebook
 
     * Classificatore Zone Italia: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/ClassifierZone.ipynb)
