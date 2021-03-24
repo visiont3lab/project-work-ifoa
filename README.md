@@ -28,7 +28,7 @@ pip install plotly cv2-tools pandas numpy streamlit opencv-python-headless
 * Maps:  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/MapsDetail.ipynb)
 
 * [Website EpiData](https://www.epidata.it/Italia/Rt_stime.html)
-* [Rt GITHUB](https://github.com/maxdevblock/covid-19-website/)  RT stime  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/maxdevblock/covid-19-website/blob/master/Italia/Rt_stime.ipynb) RT stima semplice  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/maxdevblock/covid-19-website/blob/master/Italia/Rt_semplice.ipynb)
+* [Rt GITHUB Italia Notebook](https://github.com/maxdevblock/covid-19-website/tree/master/Italia)  RT stime  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/maxdevblock/covid-19-website/blob/master/Italia/Rt_stime.ipynb) RT stima semplice  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/maxdevblock/covid-19-website/blob/master/Italia/Rt_semplice.ipynb)
 
 
 ## Note  Classe
