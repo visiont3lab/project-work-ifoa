@@ -27,7 +27,7 @@ pip install plotly cv2-tools pandas numpy streamlit opencv-python-headless
 * Zone_regioni_con_choropleth:  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/Zone_regioni_con_choropleth.ipynb)
 * Maps:  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/visiont3lab/project-work-ifoa/blob/main/colab/MapsDetail.ipynb)
 
-* (Website EpiData](https://www.epidata.it/Italia/Rt_stime.html)
+* [Website EpiData](https://www.epidata.it/Italia/Rt_stime.html)
 * [Rt GITHUB](https://github.com/maxdevblock/covid-19-website/)  RT stime  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/maxdevblock/covid-19-website/blob/master/Italia/Rt_stime.ipynb)
 
 ## Note  Classe
