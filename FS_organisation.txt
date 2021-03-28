@@ -1,5 +1,6 @@
 FOLDERS FILE SYSTEM:
 
+> canva_backup: pdfs bakups for the canva presentation
 > colab: project work lessons and tests
 > data: datasets csv + json + geojson
 > former_apps : work in progress and useful stramlit code
@@ -16,3 +17,10 @@ Later on, when each piece is completed, the final app.py will be assembled.
 > app_leo.py
 > app_tiz.py
 > app_sere.py
+
+CANVA PRESENTATION LINKS:
+
+new link presentation 1920x1080px: https://www.canva.com/design/DAEaDOBoAg8/aX2M9fjM6ebvJn723sa5EA/view?utm_content=DAEaDOBoAg8&utm_campaign=designshare&utm_medium=link&utm_source=homepage_design_menu
+
+old link presentation 1024x768px: 
+https://www.canva.com/design/DAEZ-1xu2Zc/V-aH9yVoq9aVmWH49cP2EQ/view?utm_content=DAEZ-1xu2Zc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
