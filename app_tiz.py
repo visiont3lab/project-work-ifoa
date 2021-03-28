@@ -10,7 +10,7 @@ with open('./data/limits_IT_regions.geojson') as confini:
 df = pd.read_csv("https://raw.githubusercontent.com/visiont3lab/project-work-ifoa/main/data/zone_regioni_esteso.csv")
 date = [datetime.strptime(d, "%Y-%m-%d %H:%M:%S.%f") for d in  df["data_inizio"]]
 df["data"] = date
-color_discrete_map = {'unknown':  'rgb(1,0,0)', 'bianca': 'white', 'gialla': 'yellow', 'arancione': 'orange','rossa': 'red'}
+color_discrete_map = {'unknown':  'rgb(1,0,0)', 'bianca': 'lightblue', 'gialla': 'yellow', 'arancione': 'orange','rossa': 'red'}
 
 input_date = st.date_input('Seleziona una data:')
 selected_date = input_date.strftime("%Y-%m-%d %H:%M:%S.%f")
@@ -28,7 +28,7 @@ else:
                 color="zona",                           # colonna df a cui fare l'assegnazione colore
                 color_discrete_map=color_discrete_map,  # color map defined above
                 center = {"lat": 41.9, "lon": 12.5},    # map centering
-                zoom=4.5,                               # map zooming
+                zoom=4.8,                               # map zooming
                 opacity=0.5,                            # color opacity
                 title='Zone colore dell\'Italia',
                 mapbox_style="carto-positron",
@@ -37,6 +37,12 @@ else:
 
     fig.update_geos(showcountries=False, showcoastlines=False, showland=False, fitbounds="locations")
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+    fig.update_layout(legend=dict(
+                yanchor="top",
+                y=0.99,
+                xanchor="right",
+                x=0.99
+    ))
 
     st.plotly_chart(fig)
      
