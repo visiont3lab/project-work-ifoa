@@ -1,10 +1,10 @@
 FOLDERS FILE SYSTEM:
 
-> canva_backup: pdfs bakups for the canva presentation
+> canva_backup: .*pdf bakups for the canva presentation
 > colab: project work lessons and tests
-> data: datasets csv + json + geojson
-> former_apps : work in progress and useful stramlit code
-> model: pkl file
+> data: datasets .*csv + .*json + .*geojson
+> former_apps : work in progress and useful streamlit code
+> model: .*pkl file
 > test: smatgit connectivity tests
 
 APP STRUCTURE:
