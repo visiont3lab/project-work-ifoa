@@ -1,0 +1,18 @@
+FOLDERS FILE SYSTEM:
+
+> colab: project work lessons and tests
+> data: datasets csv + json + geojson
+> former_apps : work in progress and useful stramlit code
+> model: pkl file
+> test: smatgit connectivity tests
+
+APP STRUCTURE:
+The final app is going to be the app.py file.
+At the moment for organisational purposes each piece of the final app is saved in a dedicated *.py.
+Later on, when each piece is completed, the final app.py will be assembled.
+
+> app.py
+> app_fede.py
+> app_leo.py
+> app_tiz.py
+> app_sere.py
