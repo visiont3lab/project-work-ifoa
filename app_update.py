@@ -4,7 +4,13 @@ import time
 
 def page():
 
-    st.title("Aggiornamento datasets")
+    st.title('Aggiornamento datasets')
+    st.markdown('''
+    In questa pagina è possibile effettuare gli aggiornamenti per includere nell'analisi i dati più recenti disponibili.
+    <br>
+    <br>
+    <br>
+    ''', unsafe_allow_html=True)
 
     col1, col2, col3 = st.beta_columns(3)
     last_update1 = app_utils.last_update_choropleth()
