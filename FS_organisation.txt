@@ -12,12 +12,15 @@ The final app is going to be the app.py file.
 At the moment for organisational purposes each piece of the final app is saved in a dedicated *.py.
 Later on, when each piece is completed, the final app.py will be assembled.
 
-> app.py	    # multipage layout
-> app_home.py	# home page of the app
+> app.py	        # multipage layout
+> app_home.py	    # home page of the app
 > app_fede.py
 > app_leo.py
-> app_tiz.py	# color zones time selector
+> app_province.py   # cases for regions/province
+> app_tiz.py	    # color zones time selector
 > app_sere.py
+> app_update.py     # data upadate
+> app_utils.py      # various functions
 
 CANVA PRESENTATION LINKS:
 

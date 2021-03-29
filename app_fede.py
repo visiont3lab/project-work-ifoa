@@ -1,4 +1,4 @@
 import streamlit as st
 
 def page():
-    st.title("Prova")
+    st.title("Modello predittivo per l'indice Rt")
