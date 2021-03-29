@@ -8,7 +8,7 @@ def page():
     st.title("Modello predittivo per il colore delle regioni")
     # Importare il dataset
     
-    df_iniziale = pd.read_csv("data\ita_regioni_zone_correct.csv")
+    df_iniziale = pd.read_csv("data/ita_regioni_zone_correct.csv")
 
     #df_iniziale.keys()
     st.markdown('''
