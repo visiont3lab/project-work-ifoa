@@ -8,6 +8,12 @@ import plotly.express as px
 def page():
     
     st.title('Zone colore dell\'Italia')
+
+    st.markdown('''
+        Dal 22 novembre 2020 l'emergenza Covid in Italia è stata gestita in una suddivisione in zone di colore, dipendenti dall'indice Rt calcolato in ogni regione.
+
+        In questa pagina è possibile selezionare una data per vederne la situazione nazionale. Per il calcolo dell'indice Rt si rimanda alla pagina apposita.
+    ''')
         
     with open('./data/limits_IT_regions.geojson') as confini:
         italy_regions_geo = json.load(confini)
