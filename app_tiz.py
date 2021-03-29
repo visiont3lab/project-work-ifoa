@@ -11,7 +11,7 @@ def page():
         
     with open('./data/limits_IT_regions.geojson') as confini:
         italy_regions_geo = json.load(confini)
-    df = pd.read_csv("https://raw.githubusercontent.com/visiont3lab/project-work-ifoa/main/data/zone_regioni_esteso.csv")
+    df = pd.read_csv("data/zone_regioni_esteso.csv")
     date = [datetime.strptime(d, "%Y-%m-%d %H:%M:%S.%f") for d in  df["data_inizio"]]
     df["data"] = date
     color_discrete_map = {'unknown':  'rgb(1,0,0)', 'bianca': 'lightblue', 'gialla': 'yellow', 'arancione': 'orange','rossa': 'red'}

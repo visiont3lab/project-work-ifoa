@@ -3,7 +3,8 @@ import numpy as np
 import json
 from zipfile import ZipFile
 import wget
-from datetime import datetime
+from datetime import datetime, time, timedelta, date
+import plotly.express as px
 
 
 #ritorna il file json
@@ -307,3 +308,26 @@ def merge_covid_w_zone():
         new_df = new_df.append(df_r)
     new_df.drop(columns=["note", "note_test", "note_casi", "codice_nuts_1", "codice_nuts_2"], inplace=True)
     return new_df
+
+
+##################################################################
+######## PROVINCIE
+
+
+
+def fig_sunburst(col,title):
+    df_pr = pd.read_csv("data/provincie_w_population.csv")
+    yesterday = datetime.today() - timedelta(days=1)
+    yesterday = yesterday.strftime("%Y-%m-%d")
+    df_pr = df_pr[(df_pr["data"] == yesterday) & (df_pr["totale_casi"]!=0)]
+    fig_sun = px.sunburst(df_pr, path=['regione','provincia'],
+                    values=col,
+                    color=col,
+                    range_color=[0,np.max((df_pr[col]))],
+                    color_continuous_scale="ylorrd",
+                    color_continuous_midpoint=np.average((df_pr[col])),
+                    width=800, height=800,
+                    branchvalues='total',
+                    title=title
+                    )
+    return fig_sun
