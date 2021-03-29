@@ -7,11 +7,11 @@ def main():
     pages = {
         "Home": app_home,
         "App1": app_leo,
-        "Province": app_province,
-        "Aggiornamento dati" : app_update,
+        "Conteggio delle positività": app_province,
         "Calcolo dell'indice Rt" : app_sere,
         "Modello predittivo per l'indice Rt" : app_fede,
-        "Zone colore dell'Italia": app_tiz
+        "Zone colore dell'Italia": app_tiz,
+        "Aggiornamento dati" : app_update
     }
     st.sidebar.title('Menu')
     selection = st.sidebar.radio("Vai a", list(pages.keys()))
