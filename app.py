@@ -6,11 +6,11 @@ def main():
 
     pages = {
         "Il progetto": app_home,
-        "App1": app_leo,
         "Conteggio delle positività": app_province,
         "Calcolo dell'indice Rt" : app_sere,
-        "Modello predittivo per l'indice Rt" : app_fede,
+        "Modello predittivo per l'indice Rt" : app_leo,
         "Zone colore dell'Italia": app_tiz,
+        "Modello predittivo delle zone": app_fede,
         "Aggiornamento dati" : app_update
     }
     st.sidebar.title('Menu')

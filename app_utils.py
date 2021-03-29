@@ -291,12 +291,12 @@ def merge_covid_w_zone():
 
 
 ##################################################################
-######## PROVINCIE
+######## PROVINCE
 
 
 
 def fig_sunburst(col,title):
-    df_pr = pd.read_csv("data/provincie_w_population.csv")
+    df_pr = pd.read_csv("data/province_w_population.csv")
     yesterday = datetime.today() - timedelta(days=1)
     yesterday = yesterday.strftime("%Y-%m-%d")
     df_pr = df_pr[(df_pr["data"] == yesterday) & (df_pr["totale_casi"]!=0)]

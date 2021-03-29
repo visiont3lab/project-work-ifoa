@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import numpy as np
+
 def page():
     st.title("Modello predittivo per il colore delle regioni")
     # Importare il dataset
