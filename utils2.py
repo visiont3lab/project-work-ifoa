@@ -331,3 +331,14 @@ def fig_sunburst(col,title):
                     title=title
                     )
     return fig_sun
+
+
+def last_update_choropleth():
+    df_zone = pd.read_csv("data/zone_regioni_esteso.csv")
+    last_update =  df_zone.iloc[-1,2].split(" ")[0]
+    return last_update
+
+def last_update_classificazione():
+    df_regioni = pd.read_csv("data/ita_regioni_zone_correct.csv")
+    last_update = df_regioni.iloc[-1,1]
+    return last_update
