@@ -105,26 +105,6 @@ def correct_date_restriction(df_r, idx1, idx2):
     else:
         df_r.loc[idx2,"datasetFin"] = data_inizio1
 
-# def get_indexes_vecchia(df_r):
-#     #questo mi prende gli indici giusti per ogni caso
-#     index_ini = duplicated_index(df_r, "datasetIni")
-#     index_fin = duplicated_index(df_r, "datasetFin")
-#     index_leg = duplicated_index(df_r, "legNomeBre")
-#     l1 = index_ini
-#     l2 = index_fin
-#     l3 = index_leg
-#     index_misclass = list(set([x for x in l1+l2+l3 if x in l1 and x in l2 and x in l3]))   #indici del caso A di misclasificazione
-#     index_downgrade = list(set([x for x in l1+l2+l3 if x in l1 and x in l2 and x not in l3])) #indici del caso B di downgrading
-#     index_extension = list(set([x for x in l1+l2+l3 if x in l1 and x not in l2 and x not in l3])) #indici del caso C di extension
-#     index_restrict = list(set([x for x in l1+l2+l3 if x not in l1 and x in l2 and x not in l3])) # indici del cado D di restringimento
-#     index_dict = {
-#         "misclass" : index_misclass,
-#         "downgrade" : index_downgrade,
-#         "extension" : index_extension,
-#         "restrict" : index_restrict
-#     }
-#     return index_dict
-
 def split_half(l):
     half = len(l)//2
     if half==2:
