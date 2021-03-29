@@ -10,10 +10,14 @@ def page():
     st.title('Zone colore dell\'Italia')
 
     st.markdown('''
-        Dal 22 novembre 2020 l'emergenza Covid in Italia è stata gestita in una suddivisione in zone di colore, dipendenti dall'indice Rt calcolato in ogni regione.
-
-        In questa pagina è possibile selezionare una data per vederne la situazione nazionale. Per il calcolo dell'indice Rt si rimanda alla pagina apposita.
+        Dal 22 novembre 2020 l'emergenza Covid in Italia è stata gestita in una suddivisione in zone di colore, dipendenti dall'indice Rt calcolato per ogni regione.
     ''')
+    st.markdown('''
+    Qui di seguito è possibile selezionare una data e vedere la situazione nazionale delle zone in quel giorno.<br>
+    Per il calcolo dell'indice Rt invece si rimanda alla pagina apposita.<br>
+    Per ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano, si veda la mappa interattiva dedicata.
+    ''', unsafe_allow_html=True)
+      
         
     with open('./data/limits_IT_regions.geojson') as confini:
         italy_regions_geo = json.load(confini)
@@ -55,4 +59,15 @@ def page():
         ))
 
         st.plotly_chart(fig)
-        
+    
+
+    st.markdown('''
+        <br><br>
+        <iframe src='https://flo.uri.sh/visualisation/4932244/embed' title='Interactive or visual content' frameborder='0' scrolling='no' style='width:100%;height:600px;' sandbox='allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation'></iframe>
+        <div style='width:100%!; margin-top:4px!important; text-align:right!important;'>
+            <a class='flourish-credit' href='https://public.flourish.studio/visualisation/4932244/?utm_source=embed&utm_campaign=visualisation/4932244' target='_top' style='text-decoration:none!important'>
+                <img alt='Made with Flourish' src='https://public.flourish.studio/resources/made_with_flourish.svg' style='width:105px!important;height:16px!important;border:none!important;margin:0!important;'> 
+            </a>
+        </div>
+    ''', unsafe_allow_html=True)
+
