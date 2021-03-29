@@ -10,12 +10,12 @@ def page():
     st.title('Zone colore dell\'Italia')
 
     st.markdown('''
-        Dal 22 novembre 2020 l'emergenza Covid in Italia è stata gestita in una suddivisione in zone di colore, dipendenti dall'indice Rt calcolato per ogni regione.
+        Dal 22 novembre 2020 l'emergenza Covid in Italia è stata gestita con una suddivisione in zone di colore, dipendenti dall'indice Rt calcolato per ogni regione.
     ''')
     st.markdown('''
-    Qui di seguito è possibile selezionare una data e vedere la situazione nazionale delle zone in quel giorno.<br>
+    Qui di seguito è possibile selezionare una data e vedere la situazione nazionale delle zone in quel giorno.
     Per il calcolo dell'indice Rt invece si rimanda alla pagina apposita.<br>
-    Per ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano, si veda la mappa interattiva dedicata.
+    Ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano sono illustrate nella mappa interattiva dedicata a fine pagina.
     ''', unsafe_allow_html=True)
       
         
