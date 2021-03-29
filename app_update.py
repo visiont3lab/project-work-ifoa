@@ -11,7 +11,7 @@ def page():
     last_update2 = app_utils.last_update_classificazione()
 
     with col1:
-        update_button1 = st.button("Aggiorna zone per choropleth")
+        update_button1 = st.button("Aggiorna zone per mappe di colore")
         st.write(f"ultimo aggiornamento: {last_update1}")
 
     with col2:
