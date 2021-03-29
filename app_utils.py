@@ -5,16 +5,17 @@ from zipfile import ZipFile
 import wget
 from datetime import datetime, time, timedelta, date
 import plotly.express as px
+import scipy.stats as sps
 
 
 #ritorna il file json
 def get_data():
     url = 'https://github.com/pcm-dpc/COVID-19/raw/master/aree/geojson/dpc-covid-19-aree-nuove-g-json.zip'
-    filenameZip = wget.download(url)
+    filenameZip = wget.download(url, out="data/zip")
     with ZipFile(filenameZip, 'r') as zipObj:
-        zipObj.extractall()
+        zipObj.extractall(path="data/zip")
     #print('File is unzipped') 
-    with open('dpc-covid-19-aree-nuove-g.json') as file:
+    with open('data/zip/dpc-covid-19-aree-nuove-g.json') as file:
         data = json.load(file)
     return data
 
@@ -322,3 +323,178 @@ def last_update_classificazione():
     df_regioni = pd.read_csv("data/ita_regioni_zone_correct.csv")
     last_update = df_regioni.iloc[-1,1]
     return last_update
+
+##########################################################################
+###### CALCOLO RT
+
+def covid_regioni():
+    df = pd.read_csv(
+        "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv",
+        parse_dates=['data'],
+        index_col=['data'],
+        squeeze=True).sort_index()
+    df.index = df.index.normalize()
+    return df
+
+def pierini_Rt(df, column, ignore=5,
+               SI_sh=None, SI_ra=None, 
+               conf_int=.99, smooth=7,
+               #resample='last-day-of-week',
+               func=np.mean, samples=100,
+               plot_latest_Rt=False,
+               plot=False, title='', ylim=(0, 5)):
+
+    _lo = (1 - conf_int) / 2 * 100
+    _hi = 100 - _lo
+    
+    df = df.copy(deep=True)
+    T = df.index.size
+    
+    Rt0 = sps.halfnorm(0, 0.1).rvs(samples)
+    
+    less_than_zero = df[column]<0
+    if less_than_zero.sum():
+        print('Warning: negative values in incidence. Adjusting...')
+        df.loc[less_than_zero, column] = 0
+
+    if SI_sh is None or SI_ra is None:
+        print('Warning: no serial interval given.')
+        print('Assigning default one...')
+        SI_sh = 1.87
+        SI_ra = 0.28
+    
+    SI_dist = sps.gamma(a=SI_sh, scale=1/SI_ra)
+    SI_x = np.arange(1, T+1, 1)
+    SI_y = SI_dist.pdf(SI_x)
+
+    pois_vars = np.zeros(shape=(T, samples))
+    for t in range(T):
+        pois_var = sps.poisson.rvs(df[column].values[t], size=samples)
+        pois_vars[t,:] = pois_var
+
+    Rt = np.zeros(shape=(T, samples))
+    for t in range(T):
+        if t < 1:
+            continue
+        if np.any(pois_vars[t] < ignore):
+            Rt[t,:] = Rt0
+            continue
+        last = pois_vars[t]
+        old = (pois_vars[:t] * SI_y[:t][::-1][:,None]).sum(axis=0)
+        if np.any(old < ignore):
+            Rt[t,:] = Rt0
+            continue
+
+        R_rvs = last / old
+        Rt[t,:] = R_rvs
+        
+    Rt[0,:] = Rt[1:8].mean(axis=0)
+    R = pd.DataFrame(columns=['R', 'sd', 'lo', 'hi'])
+    R['R'] = np.median(Rt, axis=1)
+    R['sd'] = np.std(Rt, axis=1)
+    R['lo'], R['hi'] = np.percentile(Rt, [_lo, _hi], axis=1)
+    R.index = df.index
+    
+    R_smoothed = R.rolling(smooth).mean()
+    R_smoothed = R_smoothed[(smooth-1):]
+    R_smo_len = R_smoothed.index.size
+    idx_min = smooth // 2
+    idx_max = R_smo_len + idx_min
+    R_smoothed.index = R.index[idx_min:idx_max]
+    
+    latest_sh = R_smoothed.R[-1]**2 / R_smoothed.sd[-1]**2
+    latest_ra = R_smoothed.R[-1] / R_smoothed.sd[-1]**2
+    latest_Rd = sps.gamma(a=latest_sh, scale=1/latest_ra)
+    latest_Rs = latest_Rd.rvs(size=10000)
+    latest_Rx = np.linspace(latest_Rd.ppf(_lo/100), latest_Rd.ppf(_hi/100), 100)
+    latest_Ry = latest_Rd.pdf(latest_Rx)
+    latest_Rm = latest_Rd.mean()
+    if latest_Rm > 1:
+        p_val = latest_Rd.cdf(1)
+    else:
+        p_val = 1 - latest_Rd.cdf(1)
+    
+    if plot:
+        ax = R_smoothed.plot(
+            figsize=(12, 5), y='R', color='k',
+            lw=1,
+        )
+        ax.fill_between(
+            R_smoothed.index,
+            R_smoothed.lo, R_smoothed.hi,
+            color='k', alpha=.25,
+            label=f'C.I. {conf_int:.0%}'
+        )
+        ax.axhline(1, color='r', ls='--')
+        ax.legend()
+        ax.set(
+            title=f'{title} Rt estimation (Method: JARE-Pierini 2020)',
+            ylabel='R(t)', xlabel='date',
+            ylim=ylim
+        )
+        plt.show()
+        
+    if plot_latest_Rt:
+        ax = az.plot_posterior(
+            latest_Rs, ref_val=1,
+            figsize=(8, 3),
+            round_to=5,
+            hdi_prob=conf_int,
+            textsize=15
+        )
+        ax.text(
+            .05, 1.1,
+            f'$p$-val = {p_val:.3f}',
+            fontsize=10, color='k',
+         ha="center", va="center",
+         bbox=dict(boxstyle="round",
+                   ec=(.2, .2, .2),
+                   fc=(.9, .9, .9, .5),
+                   ),
+            transform=ax.transAxes
+        )
+        ax.set(
+            title=f'{title} Latest Rt {R_smoothed.index[-1].date()} (Method: JARE-Pierini 2020)'
+        )
+        plt.show()
+    
+    return R_smoothed, latest_Rs
+
+
+def get_rt_index(): 
+    ISS_sh = 1.87
+    ISS_ra = 0.28
+    rg = covid_regioni()
+    df_rt = pd.DataFrame()
+    for regione in rg.denominazione_regione.unique():
+        _df = rg[rg.denominazione_regione==regione].copy(deep=True)
+        _df.loc[_df.nuovi_positivi<0, 'nuovi_positivi'] = 0
+        
+        R, Rs = pierini_Rt(_df, 'nuovi_positivi', 
+                    SI_sh=ISS_sh, SI_ra=ISS_ra,
+                    smooth=7, samples=100, ignore=5)
+        
+        R["regione"] = regione    
+        df_rt = pd.concat([R,df_rt])
+    df_rt = df_rt.reset_index()    
+    return df_rt
+
+
+
+def merge_covid_w_rt(df_r, df_rt):
+    df_rt["data"] = [datetime.strftime(d, "%Y-%m-%d") for d in df_rt["data"]]
+    df_r["data"] = [datetime.strftime(d, "%Y-%m-%d") for d in df_r["data"]]
+    df_r["indice_rt"] = 0
+    na_dates = []
+    date = df_r["data"].unique()
+    regioni = df_r["denominazione_regione"].unique()
+    for data in date:
+        for regione in regioni:
+            try: 
+                mask_rt = (df_rt["data"] == data) & (df_rt["regione"] == regione)
+                mask_r = (df_r["data"] == data) & (df_r["denominazione_regione"] == regione)
+                df_r.loc[mask_r,"indice_rt"] = df_rt.loc[mask_rt, "R"].values[0]
+            except:
+                na_dates.append(data)
+    na_dates = list(set(na_dates))
+    return df_r, na_dates

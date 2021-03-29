@@ -2,6 +2,7 @@ import streamlit as st
 import app_utils
 import time
 
+
 def page():
 
     st.title('Aggiornamento datasets')
@@ -21,7 +22,7 @@ def page():
         st.write(f"ultimo aggiornamento: {last_update1}")
 
     with col2:
-        update_button2 = st.button("Aggiorna zone per classificazione")
+        update_button2 = st.button("Aggiorna zone ed indice Rt per classificazione")
         st.write(f"ultimo aggiornamento: {last_update2}")
 
     #update button zone choropleth
@@ -32,17 +33,20 @@ def page():
         end = time.time()
         with col1:
             st.write("Zone aggiornate")
-            st.write(f"{end - start:.2f}s")
+            st.write(f"Tempo impiegato: {end - start:.2f}s")
         st.table(df_extended.tail(20))        
 
 
-    #update button zone clasificazione
+    #update button zone e rt classificazione
     if update_button2:
         start = time.time()
-        df_regioni = app_utils.merge_covid_w_zone()
-        df_regioni.to_csv("data/ita_regioni_zone_correct.csv")
+        df_r = app_utils.merge_covid_w_zone()
+        df_rt = app_utils.get_rt_index()
+        df_r, missing_dates = app_utils.merge_covid_w_rt(df_r, df_rt)
+        df_r.to_csv("data/ita_regioni_zone_correct.csv")
         end = time.time()
         with col2:
-            st.write("Zone aggiornate")
-            st.write(f"{end - start:.2f}s")
-        st.table(df_regioni.tail(20))
+            st.write("Zone ed indice Rt aggiornati")
+            st.write(f"Tempo impiegato: {end - start:.2f}s")
+            st.write(f"Seguenti date non disponibili per indice Rt: {missing_dates}")
+        st.table(df_r.tail(20))
