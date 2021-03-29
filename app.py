@@ -5,7 +5,7 @@ def main():
     #st.beta_set_page_config( layout='wide')
 
     pages = {
-        "Home": app_home,
+        "Il progetto": app_home,
         "App1": app_leo,
         "Conteggio delle positività": app_province,
         "Calcolo dell'indice Rt" : app_sere,
