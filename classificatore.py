@@ -1,4 +1,4 @@
-def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_feature_1, power_for_chosen_feature_2,df_with_first_chosen_inputs):
+def classificatore_venta(number_of_estimators,chosen_feature_1, chosen_feature_2, power_for_chosen_feature_1, power_for_chosen_feature_2,df_with_first_chosen_inputs):
     import streamlit as st
     import pandas as pd
     from datetime import datetime
@@ -87,7 +87,7 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
 
         pipeline = Pipeline([
             ("sc", StandardScaler()),
-            ('model',RandomForestClassifier(n_estimators=30))
+            ('model',RandomForestClassifier(n_estimators=number_of_estimators))
         ])
 
         # Fit
@@ -108,19 +108,6 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
     ############################################################################################################
     ############################################################################################################
     ############################################################################################################
-
-    # Score
-    score = pipeline.score(X_test,Y_test)
-    #st.write(pipeline)
-    st.write('\n')
-    st.markdown('''
-        Si può valutare l'accuracy del modello tramite lo score
-    ''')
-    st.latex(r'''
-        F_{1}=2 \, \cdot \, \frac{\mathrm{precision}\, \cdot \, \mathrm{recall}}{\mathrm{precision}\, + \, \mathrm{recall}}
-    ''')
-    st.write('\n')
-    st.write("Per questa classificazione, F_1_weighted = ", score)
 
     # Save trained model
     joblib.dump(pipeline, "model.pkl") 
@@ -168,6 +155,20 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
     st.write("\n ------- Test Results\n")
     inf.report(X_test,Y_test)
     st.write('\n')
+    
+    # Score
+    score = pipeline.score(X_test,Y_test)
+    #st.write(pipeline)
+    st.write('\n')
+    st.markdown('''
+        Si può valutare l'accuracy del modello tramite lo score
+    ''')
+    st.latex(r'''
+        F_{1}=2 \, \cdot \, \frac{\mathrm{precision}\, \cdot \, \mathrm{recall}}{\mathrm{precision}\, + \, \mathrm{recall}}
+    ''')
+    st.write('\n')
+    st.write("Per questa classificazione, F_1 = ", score)
+
     # Parte di Feature Importance
 
     import joblib
@@ -268,4 +269,10 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
     #inf = Inference()
     pred = inf.predict([ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi],regione)
     st.write("Predizione Colore Zona: " + regione + " --> "+pred)
+
+    import seaborn as sns
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots()
+    sns.heatmap(df_col.corr(), ax=ax)
+    st.write(fig)
  """

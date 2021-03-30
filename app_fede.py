@@ -8,12 +8,12 @@ import numpy as np
 def page():
     st.title("Modello predittivo per il colore delle regioni")
     # Importare il dataset
-    
+    st.write('\n')
     df_iniziale = pd.read_csv("data/ita_regioni_zone_correct.csv")
 
     #df_iniziale.keys()
     st.markdown('''
-        Prendendo in input il database regionale sulla situazione del Covid-19 in Italia fornito dalla Protezione Civile, si allena un modello di Machine Learning che è in grado di predire il colore di una regione partendo da dati di input arbitrari.
+        Prendendo in input il database regionale sulla situazione del Covid-19 in Italia fornito dalla Protezione Civile, si allena un modello di Random Forest che è in grado di predire il colore di una regione partendo da dati di input arbitrari.
         
         È possibile inserire una nuova feature combinandone due già esistenti come, ad esempio, il rapporto tra i casi da sospetto diagnostico ed il numero di nuovi positivi.
 
@@ -22,15 +22,22 @@ def page():
 
 
     # Scelta delle features del db della protezione civile da usare
-    first_chosen_inputs=["ricoverati_con_sintomi","terapia_intensiva",
+    first_chosen_inputs=["terapia_intensiva",
             "totale_ospedalizzati","totale_positivi","isolamento_domiciliare",
             "deceduti","dimessi_guariti","nuovi_positivi",
             'variazione_totale_positivi',"totale_casi","tamponi",
-            'totale_positivi_test_molecolare','totale_positivi_test_antigenico_rapido',
-            'tamponi_test_molecolare','tamponi_test_antigenico_rapido','casi_da_screening','casi_da_sospetto_diagnostico','zona']
-
+            'totale_positivi_test_molecolare',
+            'tamponi_test_molecolare','casi_da_sospetto_diagnostico','zona','indice_rt']
+    
+    first_chosen_inputs.sort()
+    #'casi_da_screening','ricoverati_con_sintomi','totale_positivi_test_antigenico_rapido','tamponi_test_antigenico_rapido'
     df_with_first_chosen_inputs=df_iniziale[first_chosen_inputs].copy()
-
+    st.write('\n')
+    st.write('\n')
+    st.write('Visualizziamo le ultime righe del database della protezione civile, (integrato con i dati corretti dei colori delle regioni e la stima dell\'indice Rt)')
+    st.dataframe(df_with_first_chosen_inputs.tail())
+    st.write('\n')
+    st.write('\n')
     #df_with_first_chosen_inputs.dtypes
 
     #print(df_with_first_chosen_inputs.tail())
@@ -51,7 +58,7 @@ def page():
     st.write('Passiamo a costruire una nuova feature per il nostro modello. Dovrai scegliere due feature dall\' elenco di quelle possibili \
         e due potenze con le quali elevare i dati in esse presenti. \n')
     st.write('\n')
-    prima_scelta=st.selectbox(label= 'Scegli la prima feature:', options=lista_scelte_possibili)
+    prima_scelta=st.selectbox(label= 'Scegli la prima feature:',index=5, options=lista_scelte_possibili)
     st.write('\n')
     lista_scelte_possibili_da_tagliare=lista_scelte_possibili
 
@@ -59,7 +66,7 @@ def page():
 
     #lista_scelte_possibili_da_tagliare.sort()
 
-    seconda_scelta=st.selectbox(label= 'Scegli la seconda feature:', options=lista_scelte_possibili_da_tagliare)
+    seconda_scelta=st.selectbox(label= 'Scegli la seconda feature:',index=5, options=lista_scelte_possibili_da_tagliare)
     st.write('\n')
     chosen_feature_1 = prima_scelta # deve diventare una scelta da bottone
     chosen_feature_2 = seconda_scelta # deve diventare una scelta da bottone
@@ -85,10 +92,17 @@ def page():
 
     st.write('\n')
     st.write('\n')
+    st.write()
+    st.write('\n')
+    numbers_list_slider=[30,40,50,60,70,80,90,100,110,120,130,140,150]
+    estimator_selector=st.select_slider(label='Inserisci il numero di stimatori per la random forest:', options=numbers_list_slider)
+    number_of_estimators=int(estimator_selector)
+    st.write('\n')
+    st.write('\n')
 
     #st.markdown('''
     #    Cliccando il seguente bottone sarà visualizzata la confusion matrix per il modello ed un grafico con la feature importance dei dati utilizzati per effettuare la classificazione.
     #''')
     interruttore=st.button(label='Avvia il modello di classificazione')
     if interruttore:
-        classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_feature_1, power_for_chosen_feature_2,df_with_first_chosen_inputs)
+        classificatore_venta(number_of_estimators,chosen_feature_1, chosen_feature_2, power_for_chosen_feature_1, power_for_chosen_feature_2,df_with_first_chosen_inputs)
