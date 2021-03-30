@@ -1,5 +1,5 @@
 import streamlit as st
-
+import streamlit.components.v1 as components
 def page():
     st.title('Analisi dei dati "Covid-19"')
     st.subheader('Studio della situazione in Italia - il progetto')
@@ -21,3 +21,6 @@ def page():
     #     </a>
     # </div>
     # ''', unsafe_allow_html=True)
+    st.subheader("Bar Chart Race totale positivi")
+    components.iframe('https://flo.uri.sh/visualisation/5715327/embed', 800, 600)
+
