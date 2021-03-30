@@ -1,5 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
+
+
 def page():
     st.title('Analisi dei dati "Covid-19"')
     st.subheader('Studio della situazione in Italia - il progetto')
@@ -8,7 +10,7 @@ def page():
         
         Le analisi si basano sui dati pubblici rilasciati dalla Protezione Civile italiana durante l'emergenza Covid del 2020-2021.
 
-        Qui di seguito si può avere una visione d'insieme delle statistiche dei dati sino ad oggi raccolti.
+        Qui di seguito si può avere una visione d'insieme delle statistiche dei dati sino ad oggi raccolti.<br><br>
     ''', unsafe_allow_html=True)
 
     

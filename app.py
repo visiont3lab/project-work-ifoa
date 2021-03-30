@@ -1,5 +1,5 @@
 import streamlit as st
-import app_home, app_fede, app_sere, app_tiz, app_update, app_province
+import app_home, app_fede, app_sere, app_tiz, app_update, app_province, app_classificatore
 
 def main():
     #st.beta_set_page_config( layout='wide')
@@ -10,6 +10,7 @@ def main():
         "Modello di stima dell'indice Rt" : app_sere,
         "Zone colore dell'Italia": app_tiz,
         "Modello predittivo delle zone": app_fede,
+        #"Classif.": app_classificatore,
         "Aggiornamento dati" : app_update
     }
     st.sidebar.title('Menu')
