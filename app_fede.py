@@ -48,7 +48,7 @@ def page():
         #k+=1
         #st.write('\n')
 
-    st.write('Possiamo a costruire una nuova feature per il nostro modello. Dovrai scegliere due feature dall\' elenco di quelle possibili \
+    st.write('Passiamo a costruire una nuova feature per il nostro modello. Dovrai scegliere due feature dall\' elenco di quelle possibili \
         e due potenze con le quali elevare i dati in esse presenti. \n')
     st.write('\n')
     prima_scelta=st.selectbox(label= 'Scegli la prima feature:', options=lista_scelte_possibili)

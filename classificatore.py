@@ -114,9 +114,13 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
     #st.write(pipeline)
     st.write('\n')
     st.markdown('''
-        In fase di training il modello ottiene lo score:
+        Si può valutare l'accuracy del modello tramite lo score
     ''')
-    st.write("f1_weighted score : ", score)
+    st.latex(r'''
+        F_{1}=2 \, \cdot \, \frac{\mathrm{precision}\, \cdot \, \mathrm{recall}}{\mathrm{precision}\, + \, \mathrm{recall}}
+    ''')
+    st.write('\n')
+    st.write("Per questa classificazione, F_1_weighted = ", score)
 
     # Save trained model
     joblib.dump(pipeline, "model.pkl") 
@@ -159,7 +163,7 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
     inf.report(X_train,Y_train)
     st.write('\n')
     st.markdown('''
-    Effettuando la classificazione sul campione di test, otteneniamo invece la seguente confusion matrix:
+    Nella fase di test, otteneniamo invece la seguente confusion matrix:
     ''')
     st.write("\n ------- Test Results\n")
     inf.report(X_test,Y_test)
@@ -193,3 +197,75 @@ def classificatore_venta(chosen_feature_1, chosen_feature_2, power_for_chosen_fe
     fig.update_layout(title="Input features Importance")
     
     st.plotly_chart(fig, use_container_width=True)
+""" 
+    #PROVA CLASSIFICATORE MANUALE
+    def get_nomi_regioni():
+        df = get_data_regioni()
+        #df["data"] = [ datetime.strptime(d, "%Y-%m-%dT%H:%M:%S") for d in  df["data"]]
+        return df["denominazione_regione"].unique().tolist()
+    def get_data_regioni():
+        '''
+        Keys: ['data', 'stato', 'codice_regione', 'denominazione_regione', 'lat',  
+        'long', 'ricoverati_con_sintomi', 'terapia_intensiva',
+        'totale_ospedalizzati', 'isolamento_domiciliare', 'totale_positivi',
+        'variazione_totale_positivi', 'nuovi_positivi', 'dimessi_guariti',  
+        'deceduti', 'casi_da_sospetto_diagnostico', 'casi_da_screening',    
+        'totale_casi', 'tamponi', 'casi_testati', 'note',
+        'ingressi_terapia_intensiva', 'note_test', 'note_casi',
+        'totale_positivi_test_molecolare',
+        'totale_positivi_test_antigenico_rapido', 'tamponi_test_molecolare',
+        'tamponi_test_antigenico_rapido', 'codice_nuts_1', 'codice_nuts_2']
+        '''
+        #url = "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-regioni/dpc-covid19-ita-regioni.csv"
+        url = "data/dpc-covid19-ita-regioni.csv"
+        df = pd.read_csv(url)
+        df["data"] = [ datetime.strptime(d, "%Y-%m-%dT%H:%M:%S") for d in  df["data"]]
+        return df
+    def get_input_prediction(regione):
+        df = pd.read_csv("data/dpc-covid19-ita-regioni-zone.csv")
+        df = df[df["denominazione_regione"]==regione]
+        last = df.tail(1)
+        ricoverati_con_sintomi = last["ricoverati_con_sintomi"].tolist()[0]
+        terapia_intensiva = last["terapia_intensiva"].tolist()[0]
+        totale_ospedalizzati = last["totale_ospedalizzati"].tolist()[0]
+        totale_positivi = last["totale_positivi"].tolist()[0]
+        isolamento_domiciliare = last["isolamento_domiciliare"].tolist()[0]
+        deceduti = last["deceduti"].tolist()[0]
+        dimessi_guariti = last["dimessi_guariti"].tolist()[0]
+        nuovi_positivi = last["nuovi_positivi"].tolist()[0]
+        totale_casi = last["totale_casi"].tolist()[0]
+        tamponi = last["tamponi"].tolist()[0]
+        return ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi    
+
+    nomi_regioni = get_nomi_regioni() 
+    regione = st.selectbox("Nome Regione", nomi_regioni, index=4)
+
+    ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi = get_input_prediction(regione)
+    col1, col2, col3, col4, col5 = st.beta_columns(5)
+    with col1:
+        tamponi = st.text_input("tamponi",value=tamponi)
+    with col2:
+        deceduti = st.text_input("Deceduti",value=deceduti)
+    with col3:
+        totale_casi = st.text_input("Totale Casi",value=totale_casi)
+    with col4:
+        dimessi_guariti = st.text_input("Dimessi Guariti",value=dimessi_guariti)
+    with col5:
+        totale_ospedalizzati = st.text_input("Totale Ospedalizzati",value=totale_ospedalizzati)
+    col1, col2, col3, col4, col5 = st.beta_columns(5)
+    with col1:
+        ricoverati_con_sintomi = st.text_input("Ricoverati Con Sintomi",value=ricoverati_con_sintomi)
+    with col2:
+        totale_positivi = st.text_input("Totale Positivi",value=totale_positivi)
+    with col3:
+        isolamento_domiciliare = st.text_input("Isol. Domiciliare",value=isolamento_domiciliare)
+    with col4:
+        terapia_intensiva = st.text_input("Terapia Intensiva",value=terapia_intensiva)
+    with col5:
+        nuovi_positivi = st.text_input("Nuovi Positivi",value=nuovi_positivi)
+        # --------------------------------------------------------------------
+
+    #inf = Inference()
+    pred = inf.predict([ricoverati_con_sintomi,terapia_intensiva,totale_ospedalizzati,totale_positivi,isolamento_domiciliare,deceduti,dimessi_guariti,nuovi_positivi,totale_casi,tamponi],regione)
+    st.write("Predizione Colore Zona: " + regione + " --> "+pred)
+ """
