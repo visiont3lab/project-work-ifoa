@@ -1,11 +1,12 @@
 import streamlit as st
-import app_home, app_fede, app_tiz, app_update, app_province
+import app_home, app_fede, app_tiz, app_update, app_province, app_italia
 
 def main():
     #st.beta_set_page_config( layout='wide')
 
     pages = {
         "Il progetto": app_home,
+        "La situazione italiana" : app_italia,
         "Conteggio delle positività": app_province,
         "Zone colore dell'Italia": app_tiz,
         "Modello predittivo delle zone": app_fede,
