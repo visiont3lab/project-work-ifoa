@@ -14,7 +14,7 @@ def page():
     ''')
     st.markdown('''
     Qui di seguito è possibile selezionare una data e vedere la situazione nazionale delle zone in quel giorno.
-    Per il calcolo dell'indice Rt invece si rimanda alla pagina apposita.<br>
+    <br>
     Ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano sono illustrate nella mappa interattiva dedicata a fine pagina.
     ''', unsafe_allow_html=True)
       
