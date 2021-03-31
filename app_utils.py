@@ -324,6 +324,11 @@ def last_update_classificazione():
     last_update = df_regioni.iloc[-1,1]
     return last_update
 
+def last_update_province():
+    df_pr = pd.read_csv("data/province_w_population.csv")
+    last_update = df_pr.iloc[-1,1]
+    return last_update
+
 ##########################################################################
 ###### CALCOLO RT
 
@@ -498,3 +503,31 @@ def merge_covid_w_rt(df_r, df_rt):
                 na_dates.append(data)
     na_dates = list(set(na_dates))
     return df_r, na_dates
+
+def update_province():
+    df_pr = pd.read_csv("https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-province/dpc-covid19-ita-province.csv")
+    pr_pop = pd.read_csv("data/popprov.csv")
+
+    df_pr.rename(columns={"denominazione_regione":"regione", "denominazione_provincia" : "provincia"}, inplace=True)
+    df_pr['data'] = df_pr['data'].apply(datetime.strptime, args=(["%Y-%m-%dT%H:%M:%S"]))
+    df_pr['data'] = df_pr['data'].apply(datetime.strftime, args=(["%Y-%m-%d"]))
+
+    mask1 = ~(df_pr["provincia"] == "In fase di definizione/aggiornamento")
+    mask2 = ~(df_pr["provincia"] == "Fuori Regione / Provincia Autonoma")
+    mask = mask1 & mask2
+    df_pr = df_pr[mask]
+    for provincia in df_pr["provincia"]:
+        mask1 = df_pr["provincia"] == provincia
+        mask2 = pr_pop["provincia"] == provincia
+        if mask1.sum() > 1:
+            try:
+                df_pr.loc[mask1,"pop"] = pr_pop.loc[mask2,'pop'].to_list()[0]
+            except:
+                pass
+
+    df_pr.fillna(0, inplace=True)
+    mask = df_pr['pop'] == 0
+    mask = df_pr[mask].index
+    df_pr.drop(mask,inplace=True)
+    df_pr["densità_casi"] = df_pr["totale_casi"] / df_pr["pop"] *100
+    return df_pr

@@ -16,6 +16,7 @@ def page():
     col1, col2, col3 = st.beta_columns(3)
     last_update1 = app_utils.last_update_choropleth()
     last_update2 = app_utils.last_update_classificazione()
+    last_update3 = app_utils.last_update_province()
 
     with col1:
         update_button1 = st.button("Aggiorna zone per mappe di colore")
@@ -24,6 +25,10 @@ def page():
     with col2:
         update_button2 = st.button("Aggiorna zone ed indice Rt per classificazione")
         st.write(f"ultimo aggiornamento: {last_update2}")
+    
+    with col3:
+        update_button3 = st.button("Aggiorna dati province")
+        st.write(f"ultimo aggiornamento: {last_update3}")
 
     #update button zone choropleth
     if update_button1:
@@ -50,3 +55,13 @@ def page():
             st.write(f"Tempo impiegato: {end - start:.2f}s")
             st.write(f"Seguenti date non disponibili per indice Rt: {missing_dates}")
         st.table(df_r.tail(20))
+
+    if update_button3:
+        start = time.time()
+        df_pr = app_utils.update_province()
+        df_pr.to_csv("data/province_w_population.csv")
+        end = time.time()
+        with col3:
+            st.write("Aggiornati dati province")
+            st.write(f"Tempo impiegato: {end - start:.2f}s")
+        st.table(df_pr.tail(20))
