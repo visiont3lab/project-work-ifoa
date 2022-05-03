@@ -20,7 +20,7 @@ def page():
     
      st.markdown('''
      (*) <small>**AGGIORNAMENTO**: dal 6 aprile 2021, in seguito ad un nuovo decreto, ci sono state nuove modifiche sulle zone colore, 
-     pertanto i dati seguenti a questa data non sono visualizzabili in mappa.<small>
+     pertanto i dati seguenti a questa data non sono visualizzabili in mappa.</small>
      ''', unsafe_allow_html=True)      
         
     with open('./data/limits_IT_regions.geojson') as confini:
