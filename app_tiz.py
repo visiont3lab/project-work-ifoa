@@ -19,7 +19,11 @@ def page():
     Ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano sono illustrate 
     nella mappa interattiva dedicata a fine pagina.
     ''', unsafe_allow_html=True)
-      
+    
+    st.markdown('''
+    Per il calcolo dell'indice Rt invece si rimanda alla pagina apposita.<br>
+    Ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano sono illustrate nella mappa interattiva dedicata a fine pagina.
+    ''', unsafe_allow_html=True)   
         
     with open('./data/limits_IT_regions.geojson') as confini:
         italy_regions_geo = json.load(confini)
@@ -32,7 +36,7 @@ def page():
     selected_date = input_date.strftime("%Y-%m-%d %H:%M:%S.%f")
     map_df = df[df["data"]==selected_date]
 
-    start_date = "2020-11-22 00:00:00.0" 
+    start_date = "2020-11-22 00:00:00.0"
 
     if selected_date < start_date:
         st.error('Non sono presenti dati di zona per la data inserita. Inserire un\'altra data.')
