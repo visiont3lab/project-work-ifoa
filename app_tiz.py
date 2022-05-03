@@ -13,15 +13,10 @@ def page():
         Dal 22 novembre 2020 l'emergenza Covid in Italia è stata gestita con una suddivisione in zone di colore, dipendenti dall'indice Rt calcolato per ogni regione.
     ''')
     st.markdown('''
-    Qui di seguito è possibile selezionare una data (*) e vedere la situazione nazionale delle zone in quel giorno.
+    Qui di seguito è possibile selezionare una data e vedere la situazione nazionale delle zone in quel giorno.
     Per il calcolo dell'indice Rt invece si rimanda alla pagina apposita.<br>
     Ulteriori informazioni riguardanti le zone e le restrizioni che esse implementano sono illustrate nella mappa interattiva dedicata a fine pagina.
-    ''', unsafe_allow_html=True)
-    
-     st.markdown('''
-     (*) <small>**AGGIORNAMENTO**: dal 6 aprile 2021, in seguito ad un nuovo decreto, ci sono state nuove modifiche sulle zone colore, 
-     pertanto i dati seguenti a questa data non sono visualizzabili in mappa.</small>
-     ''', unsafe_allow_html=True)      
+    ''', unsafe_allow_html=True)   
         
     with open('./data/limits_IT_regions.geojson') as confini:
         italy_regions_geo = json.load(confini)
@@ -35,9 +30,8 @@ def page():
     map_df = df[df["data"]==selected_date]
 
     start_date = "2020-11-22 00:00:00.0"
-    end_date = "2021-04-07 00:00:00.0" 
 
-    if selected_date < start_date and selected_date >= end_date:
+    if selected_date < start_date:
         st.error('Non sono presenti dati di zona per la data inserita. Inserire un\'altra data.')
     else:
         fig = px.choropleth_mapbox(data_frame=map_df, 
